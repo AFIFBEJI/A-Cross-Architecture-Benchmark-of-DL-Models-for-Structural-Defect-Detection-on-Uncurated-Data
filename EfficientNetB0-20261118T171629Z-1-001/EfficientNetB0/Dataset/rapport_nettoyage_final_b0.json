@@ -1,0 +1,29 @@
+{
+  "modele_cible": "EfficientNetB0",
+  "target_size": 256,
+  "jpeg_quality": 85,
+  "doublons_exclus": 3,
+  "fuites_entre_splits": 3,
+  "images_converties_rgb": 626,
+  "taille_finale_gb": 0.26,
+  "comptage_final": {
+    "train": {
+      "corrosion": 3936,
+      "spalling": 3747,
+      "normal": 3594,
+      "cracks": 3430
+    },
+    "val": {
+      "corrosion": 844,
+      "spalling": 802,
+      "normal": 770,
+      "cracks": 735
+    },
+    "test": {
+      "corrosion": 844,
+      "spalling": 803,
+      "normal": 771,
+      "cracks": 734
+    }
+  }
+}

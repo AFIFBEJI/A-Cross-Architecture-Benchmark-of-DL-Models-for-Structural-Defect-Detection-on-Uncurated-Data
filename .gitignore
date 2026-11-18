@@ -1,0 +1,10 @@
+*.keras
+*.pt
+*.pth
+*.h5
+*.onnx
+*.zip
+data/
+datasets/
+__pycache__/
+.ipynb_checkpoints/

@@ -1,0 +1,17 @@
+{
+  "model": "efficientnet_b2 (ImageNet pretrained)",
+  "imgsz": "260",
+  "epochs": "30",
+  "batch": "24",
+  "optimizer": "AdamW",
+  "lr0": "0.0003",
+  "weight_decay": "0.0001",
+  "scheduler": "CosineAnnealingLR",
+  "label_smoothing": "0.1",
+  "patience": "7",
+  "dropout": "0.3",
+  "freeze_backbone": "False",
+  "augment": "True",
+  "device": "cuda",
+  "seed": "42"
+}

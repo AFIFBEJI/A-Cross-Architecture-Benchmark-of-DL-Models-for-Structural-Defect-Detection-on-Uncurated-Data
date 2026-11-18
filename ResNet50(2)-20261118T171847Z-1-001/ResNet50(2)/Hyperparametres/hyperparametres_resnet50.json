@@ -1,0 +1,15 @@
+{
+  "model": "resnet50 (ImageNet pretrained)",
+  "imgsz": "224",
+  "epochs": "30",
+  "batch": "32",
+  "optimizer": "AdamW",
+  "lr0": "0.0003",
+  "weight_decay": "0.0001",
+  "scheduler": "CosineAnnealingLR",
+  "label_smoothing": "0.1",
+  "patience": "7",
+  "augment": "True",
+  "device": "cuda",
+  "seed": "42"
+}

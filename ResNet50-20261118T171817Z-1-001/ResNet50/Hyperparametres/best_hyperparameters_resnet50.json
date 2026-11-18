@@ -1,0 +1,8 @@
+{
+  "dense_units": 1024,
+  "dropout_rate": 0.6000000000000001,
+  "learning_rate": 0.001,
+  "unfreeze_layers": 20,
+  "use_batchnorm": true,
+  "optimizer": "rmsprop"
+}
