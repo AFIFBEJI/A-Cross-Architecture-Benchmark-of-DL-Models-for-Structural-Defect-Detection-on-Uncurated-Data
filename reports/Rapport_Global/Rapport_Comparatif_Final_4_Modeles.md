@@ -7,6 +7,8 @@
 **Date :** Août 2026
 **Réunion de suivi prévue :** semaine du 17 août 2026
 
+> **Périmètre : ce rapport ne couvre que la version 1** (dataset nettoyé de 21 010 images, métriques sur le split **test**, YOLO26**s**-cls). Les résultats v2 (autre protocole, autre dataset, évaluations sur validation et, pour ResNet50/B0/B2, sur la corrosion uniquement) ne sont pas comparables et sont décrits dans `EXPERIMENT_INDEX.md` et `models/*/v2/`. Le fichier cité `Suivi_Nouveaux_Datasets.xlsx` est fourni dans ce dossier.
+
 ---
 
 ## 1. Objectif de ce rapport

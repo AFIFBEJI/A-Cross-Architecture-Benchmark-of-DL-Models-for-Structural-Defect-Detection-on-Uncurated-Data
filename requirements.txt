@@ -1,12 +1,11 @@
+# Dépendances communes à l'évaluation (evaluation/, inference/, tools/). Les environnements d'entraînement sont séparés :
+#   requirements-tf.txt     (v1 EfficientNet/ResNet50, Keras/TensorFlow)
+#   requirements-torch.txt  (YOLO26 v1+v2, PyTorch v2)
+# Les versions inconnues sont à figer avec tools/capture_env.py (voir docs/ENVIRONMENT.md).
 numpy
 pandas
 matplotlib
 seaborn
 scikit-learn
 scipy
-statsmodels
 pillow
-torch
-torchvision
-tensorflow
-ultralytics

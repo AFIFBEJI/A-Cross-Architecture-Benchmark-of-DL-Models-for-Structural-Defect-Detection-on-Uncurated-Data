@@ -1,0 +1,12 @@
+# Environnement B — YOLO26 (v1 et v2) et modèles PyTorch v2 (ResNet50, EfficientNet-B0/B2)
+# Connu (Kaggle P100, v1 YOLO26s) : Python 3.12.13, ultralytics 8.4.110, torch 2.4.1+cu121, torchvision 0.19.1+cu121
+# (installation : pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 --index-url https://download.pytorch.org/whl/cu121)
+ultralytics==8.4.110
+torch==2.4.1
+torchvision==0.19.1
+# Colab T4 / Kaggle T4 (v2) : versions NON documentées -> `python tools/capture_env.py colab_t4_v2` / `kaggle_t4_v2` puis figer.
+scikit-learn
+pandas
+matplotlib
+seaborn
+pillow
