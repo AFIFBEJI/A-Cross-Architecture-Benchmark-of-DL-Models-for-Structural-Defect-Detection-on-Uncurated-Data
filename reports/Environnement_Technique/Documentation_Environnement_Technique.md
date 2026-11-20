@@ -2,6 +2,8 @@
 
 **Auteur :** Yacin
 **Date :** Août 2026
+> **Périmètre** : ce document ne décrit que l'environnement **Kaggle P100 (v1)**. Les environnements Colab T4 / Kaggle T4 de la v2, les versions figées et la procédure de reconstruction sont dans `docs/ENVIRONMENT.md`.
+
 **Objectif :** Garantir la reproductibilité et la transparence scientifique des expérimentations, conformément à la demande du superviseur.
 
 ---
@@ -97,7 +99,7 @@ Point critique pour la reproductibilité, rencontré à plusieurs reprises duran
 
 ## 7. Reproductibilité
 
-- **Seed fixée** à `42` pour tous les échantillonnages aléatoires (Keras `image_dataset_from_directory`, `random.seed()` pour les fusions de datasets) — garantit des splits reproductibles.
+- **Seeds** : `42` pour l'ordre de mélange Keras (`image_dataset_from_directory`) et `random.seed()` des fusions de datasets ; **YOLO26 v1 : seed 0** (`args.yaml`, défaut Ultralytics) — correction d'une mention antérieure « 42 pour toutes les exécutions ». Pas de graine globale TensorFlow. Détail : `docs/ENVIRONMENT.md` §2.
 - **Hyperparamètres sauvegardés** en JSON après chaque recherche (Keras Tuner / Ultralytics `.tune()`), permettant de reproduire l'entraînement final sans refaire la recherche.
 - **Callbacks d'entraînement standardisés** : `EarlyStopping`, `ReduceLROnPlateau`, `ModelCheckpoint`, `CSVLogger` pour tous les modèles TensorFlow, garantissant une trace complète de l'historique d'entraînement.
 

@@ -1,6 +1,9 @@
-split,classe,n_images,largeur_moy,hauteur_moy,poids_moy_ko
-train,corrosion,5208,307.465,300.485,24.8722265625
-train,normal,7094,256.0,256.0,7.486806640625
-train,cracks,7648,655.5,586.61,535.5612744140625
-train,spalling,4996,529.99,523.345,47.3703759765625
-val,corrosion,603,1171.2,1002.59,637.5134912109374
+split,classe,n_images,source
+train,corrosion,1676,derive_du_rapport (total - val)
+train,normal,2865,derive_du_rapport (total - val)
+train,cracks,3352,derive_du_rapport (total - val)
+train,spalling,1333,derive_du_rapport (total - val)
+val,corrosion,418,rapport_EfficientNetB2.md
+val,normal,716,rapport_EfficientNetB2.md
+val,cracks,838,rapport_EfficientNetB2.md
+val,spalling,333,rapport_EfficientNetB2.md

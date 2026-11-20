@@ -1,5 +1,8 @@
 # Modèle : ResNet50(2) — Classification d'images
 
+> ⚠ **Accuracy 99.17 % = corrosion uniquement (602 images), pas un résultat à quatre classes.** Mesurée sur `val/` (aussi utilisé pour l'early stopping).
+
+
 ## 1. Contexte
 - **Dataset** : `NewDataSet` (copie stockée sur Google Drive)
 - **Tâche** : Classification — détection de dommages sur béton

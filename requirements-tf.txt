@@ -1,0 +1,10 @@
+# Environnement A — v1 EfficientNet-B0/B2, ResNet50 (Keras/TensorFlow), Kaggle P100, Python 3.12.13
+# Versions connues par la documentation : aucune pour TF/Keras. À FIGER : lancer `python tools/capture_env.py kaggle_p100_v1`
+# dans le notebook v1 puis remplacer ce fichier par environments/kaggle_p100_v1_freeze.txt (filtré).
+tensorflow
+keras-tuner
+scikit-learn
+pandas
+matplotlib
+seaborn
+pillow

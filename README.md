@@ -113,27 +113,28 @@ These are directional hypotheses to be tested, not pre-supposed results. The pos
 
 ```
 .
-├── EfficientNetB0/              # EfficientNet-B0: notebooks, scripts, results
-├── EfficientNetB2/              # EfficientNet-B2: notebooks, scripts, results
-├── ResNet50/                    # Aigis (ResNet50) baseline
-├── YOLO26/                      # YOLOv26-Classification
-├── Rapport_Global/              # Final project report
-├── Recherche_Bibliographique/   # Literature review and state of the art
-├── Veille_Technologique/        # Technology watch
-├── Environnement_Technique/     # Technical environment description
-├── requirements.txt             # Python dependencies
+├── EXPERIMENT_INDEX.md          # Index des expériences (modèle x version), définitions v1/v2, anomalies
+├── code/                        # Scripts: nettoyage, partition, tuning, entraînement, test (v1) ; références v2
+├── notebooks/                   # Exports .ipynb (avec sorties) + EXECUTION_ORDER.md
+├── evaluation/                  # Métriques, matrices de confusion, McNemar/bootstrap, courbes
+├── inference/                   # Inférence (évaluation seule) d'un checkpoint sur un dossier d'images
+├── docs/                        # DATASETS.md, WEIGHTS_REGISTRY.md, ENVIRONMENT.md
+├── manifests/                   # Manifestes de partition (CSV MD5) — à générer
+├── environments/                # pip freeze / versions par notebook — à générer
+├── tools/                       # make_manifest, verify_manifest, hash_files, capture_env
+├── models/<modèle>/{v1,v2}/     # Dataset (rapports), Hyperparametres, Resultats, rapports par modèle
+├── reports/                     # Rapport global, bibliographie, veille, environnement
+├── requirements.txt, requirements-tf.txt, requirements-torch.txt
 └── README.md
 ```
 
-Each model folder may contain a `Modeles/` subfolder for the trained weights. These are not stored in the repository (see below).
+> **Note de cohérence (voir `EXPERIMENT_INDEX.md`)** : le protocole zero-shot décrit plus haut (Phase 2) n'a pas été exécuté. Les résultats du dépôt proviennent d'expériences où chaque modèle est **fine-tuné** sur le train split de son dataset puis évalué sur un split de ce dataset (v1 : jeu nettoyé de 21 010 images ; v2 : jeu étendu, protocole différent). Les sections Objectives/Methodology décrivent le protocole prévu et seront alignées avec le superviseur.
 
 ## Data and Model Weights
 
-Trained model weights (`.keras`, `.pt`) and the image dataset are **not stored in this repository** because their size exceeds GitHub's file limits. They are available on Google Drive:
+Règle uniforme (détail : `docs/WEIGHTS_REGISTRY.md`) : les checkpoints d'entraînement (`.keras`, `.pt`) ne sont **pas** dans Git ; ils sont sur Google Drive, identifiés par chemin, taille et SHA-256. Seuls trois exports `.tflite` v1 (convertis, n'ayant produit aucune métrique) sont versionnés. Les images ne sont pas redistribuées ; les partitions sont décrites par des manifestes MD5 (`manifests/`, `docs/DATASETS.md`).
 
 **[Project Google Drive folder](https://drive.google.com/drive/u/0/folders/1F4AUqhfDRvCa-3bZb30VMvE_XZP_OPIN)**
-
-To reproduce the experiments, download the weights from the Drive folder and place them in the `Modeles/` subfolder of the corresponding model directory.
 
 ## Installation
 
@@ -142,7 +143,7 @@ git clone https://github.com/AFIFBEJI/A-Cross-Architecture-Benchmark-of-DL-Model
 cd A-Cross-Architecture-Benchmark-of-DL-Models-for-Structural-Defect-Detection-on-Uncurated-Data
 python -m venv .venv
 .venv\Scripts\activate          # Linux/macOS: source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt   # + requirements-tf.txt ou requirements-torch.txt selon l'expérience (docs/ENVIRONMENT.md)
 ```
 
 Core dependencies: `torch`, `torchvision`, `tensorflow`/`keras` (EfficientNet and ResNet50 `.keras` models), `ultralytics` (YOLOv26-Classification), `scikit-learn`, `scipy`/`statsmodels`, `pandas`, `matplotlib`/`seaborn`.
@@ -163,4 +164,4 @@ Core dependencies: `torch`, `torchvision`, `tensorflow`/`keras` (EfficientNet an
 
 ## Status
 
-Internship deliverables submitted: code, trained models (via Google Drive), and reports (see `Rapport_Global/` for the full results). Manuscript drafting is planned as follow-up work.
+Travail en cours de mise en conformité reproductibilité (voir `EXPERIMENT_INDEX.md`). Disponible : code v1, index des expériences, documentation datasets/poids/environnement, scripts d'évaluation. **Restent à fournir** : notebooks `.ipynb` exportés, manifestes MD5, SHA-256 et chemins Drive des 8 checkpoints, versions figées des environnements, évaluation 4 classes de la v2. Les résultats v2 ne sont pas des résultats de test à quatre classes (voir index). Le protocole zero-shot n'a pas été exécuté. Rédaction du manuscrit : travail ultérieur.

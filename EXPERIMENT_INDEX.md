@@ -1,0 +1,52 @@
+# Index des expériences
+
+Une ligne par modèle et par version. Les champs que seul l'auteur peut confirmer sont marqués **⚠ à confirmer**. Tous les chemins sont relatifs à la racine du dépôt.
+
+## Définition des versions
+
+- **Version 1 (v1)** : dataset Kaggle `daikhiyassine/dataset` (21 013 images brutes) **nettoyé** (doublons MD5 et fuites inter-splits retirés, conversion RGB, 256×256 JPEG q85 → 21 010 images, train 14 707 / val 3 151 / test 3 152, seed 42), modèles **Keras/TensorFlow** (EfficientNet-B0/B2, ResNet50) et **Ultralytics** (YOLO26s-cls), hyperparamètres par recherche (Keras Tuner / `model.tune`), entraînement 2 phases, test sur le split test dédié.
+- **Version 2 (v2)** : réentraînement **PyTorch/torchvision** (EfficientNet-B0/B2, ResNet50) et Ultralytics (YOLO26**n**-cls) avec un jeu d'hyperparamètres fixe (AdamW, lr 3e-4, 30 epochs, patience 7), **sans recherche d'hyperparamètres**, sur des copies d'un dataset étendu (famille *concrete-damage-v3*, 35 641 images au total après ajout de MDMCS/RCS-2119/RCS-1841/Surface Crack/Damage Detection ; nombre exact d'images utilisé par modèle ⚠ à confirmer) qui **ne sont pas identiques entre modèles** (voir anomalies), évaluée sur le dossier `val/`.
+
+## Statut d'entraînement et type de benchmark
+
+Toutes les expériences ci-dessous sont **entraînées (fine-tuning de poids ImageNet) sur le train split du dataset indiqué, puis évaluées sur un split de ce même dataset**. **Aucune expérience n'est « évaluation seule »** : le protocole zero-shot décrit dans le README (« Phase 2 : inférence sans fine-tuning sur 21 013 images non curées ») **n'a pas été exécuté** ; les rapports décrivent la réalité (entraînement). Le README racine décrit le protocole *prévu*.
+
+Benchmarks : **curé** = GROUP2 (3 600 images, travail antérieur, hors de ce dépôt) ; **nettoyé** = v1 (21 010 images issues du jeu non curé après nettoyage) ; **non curé** = jeu brut de 21 013 images : **aucun résultat de ce dépôt n'a été obtenu en zero-shot sur ce jeu**. La v2 est un benchmark sur données **étendues, non nettoyées de façon uniforme** (nettoyage partiel selon le modèle).
+
+## Tableau
+
+| ID | Modèle (variante) | Ver. | Rôle | Benchmark | Copie du dataset | Partition | Fichier d'hyperparamètres | Seed | Plateforme / GPU | Code | Checkpoint | Fichiers de résultats |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| B0-v1 | EfficientNet-B0 | 1 | fine-tuné (2 phases) + évalué | nettoyé | Kaggle `daikhiyassine/dataset` → `dataset_clean_b0` (21 010) | 70/15/15 d'origine, test 3 152 | `models/efficientnet_b0/v1/Hyperparametres/best_hyperparameters_b0.json` | 42 | Kaggle, P100 ⚠ à confirmer | `code/v1/data/01-02`, `code/v1/efficientnet_b0/{tune,train,test}.py` ; notebook ⚠ à exporter | `.keras` : Drive (non versionné) ; `models/efficientnet_b0/v1/Modeles/aigis_efficientnetb0.tflite` | `models/efficientnet_b0/v1/Resultats/` (**test** acc 92.32 %, AUC 0.9889), `Dataset/rapport_nettoyage_final_b0.json` |
+| B2-v1 | EfficientNet-B2 | 1 | fine-tuné + évalué | nettoyé | Kaggle idem → `dataset_clean_b0` ⚠ à confirmer | idem | `models/efficientnet_b2/v1/Hyperparametres/best_hyperparameters.json` | 42 | Kaggle, P100 ⚠ | `code/v1/data/01-02`, `code/v1/efficientnet_b2/{tune,train,test}.py` | `.keras` : Drive ; `…/v1/Modeles/aigis_efficientnetb2.tflite` | `models/efficientnet_b2/v1/Resultats/` (93.05 %, AUC 0.9909) |
+| R50-v1 | ResNet50 (Aigis) | 1 | fine-tuné + évalué | nettoyé | Kaggle idem → `dataset_clean_aigis` | idem | `models/aigis_resnet50/v1/Hyperparametres/best_hyperparameters_resnet50.json` | 42 | Kaggle, P100 ⚠ | `code/v1/data/01-02`, `code/v1/resnet50/{tune,train,test}.py` | `.keras` : Drive ; `…/v1/Modeles/aigis_resnet50.tflite` (renommé ; export converti, n'a produit aucune métrique) | `models/aigis_resnet50/v1/Resultats/` (93.69 %, AUC 0.9908) |
+| Y26-v1 | YOLO26**s**-cls (small) | 1 | fine-tuné (`model.tune` 15 it. + 50 epochs) + évalué | nettoyé | Kaggle idem → `dataset_clean_yolo26` (3 doublons retirés) | idem | `models/yolov26_cls/v1/Hyperparametres/{best_hyperparameters_yolo26.json,args.yaml}` | **0** (`args.yaml`) | Kaggle, P100, `torch 2.4.1+cu121` | `code/v1/data/01-02`, `code/v1/yolo26/{tune,train,test}.py` | `best.pt` (Drive) ; export ONNX (TFLite en échec) | `models/yolov26_cls/v1/Resultats/` (94.70 %, AUC 0.9942, 0.9 ms/img) |
+| R50-v2 | ResNet50 | 2 | fine-tuné + évalué | étendu, non uniforme | Colab / Drive `NewDataSet` (~25 049 train après nettoyage) | `val/` existant du Drive | `models/aigis_resnet50/v2/Hyperparametres/hyperparametres_resnet50.json` | 42 | Colab, T4 | notebook ⚠ **absent** ; `code/v2/train_pytorch_reference.py` (reconstruction) | non versionné ⚠ | `models/aigis_resnet50/v2/Resultats/` — **corrosion uniquement (602/603 images), pas un résultat 4 classes** (cf. A1) |
+| B0-v2 | EfficientNet-B0 | 2 | fine-tuné + évalué | étendu, non uniforme | Colab / Drive `NewDataSet` (~25 050) | `val/` existant | `…/efficientnet_b0/v2/Hyperparametres/hyperparametres_efficientnetb0.json` | 42 | Colab, T4 | notebook ⚠ absent ; reconstruction idem | non versionné ⚠ | `…/efficientnet_b0/v2/Resultats/` — **corrosion uniquement (602/603 images), pas un résultat 4 classes** (cf. A1) |
+| B2-v2 | EfficientNet-B2 | 2 | fine-tuné + évalué | étendu (sous-ensemble 11 531 train+val) | Kaggle `concrete-damage-v3` ⚠ à confirmer | 80/20 stratifié créé automatiquement (9 226/2 305), évalué sur ce val | `…/efficientnet_b2/v2/Hyperparametres/hyperparametres_efficientnetb2.json` | 42 | Kaggle, T4 | notebook ⚠ absent ; reconstruction idem | non versionné ⚠ | `…/efficientnet_b2/v2/Resultats/` (**corrosion uniquement**, 602 images, 97.18 %, val ; le 97.09 %/4 classes du rapport n'a aucun fichier à l'appui) |
+| Y26-v2 | YOLO26**n**-cls (nano) | 2 | fine-tuné + évalué | idem B2-v2 | Kaggle `concrete-damage-v3` ⚠ | idem B2-v2 | `…/yolov26_cls/v2/Hyperparametres/hyperparametres_yolo26.json` | 42 | Kaggle, T4 | notebook ⚠ absent ; `code/v2/train_yolo26n_reference.py` | `best.pt` (3.2 Mo, Drive ⚠) | `…/yolov26_cls/v2/Resultats/` (**validation**, 96.75 % / 97.84 % / 97.67 % incohérents) |
+
+## Anomalies à résoudre avant toute comparaison
+
+- **A1 — Évaluations v2 sur la corrosion uniquement (ResNet50, B0, B2)** : les fichiers de résultats montrent un support de 602/603 images, toutes `corrosion`, et 0 pour les 3 autres classes. Les 99.17 %, 97.01 % et 97.18 % sont des résultats « corrosion uniquement, et non à quatre classes » (marqués ainsi dans les README et rapports v2). Pour B2, le rapport annonce en plus 97.09 % sur 4 classes sans fichier de résultats correspondant (contradiction). **Pas d'évaluation 4 classes disponible** : à produire comme nouvelle exécution identifiée (ex. `*-v2-eval4`) sur un test indépendant construit à partir du manifeste v2, avec `inference/` + `evaluation/`.
+- **A2 — Partition d'évaluation v2 = validation** (les 4 modèles) : le split sert à l'early stopping/sélection du meilleur epoch (YOLO : confirmé) ; les métriques v2 sont des métriques de validation. Les métriques v1 sont sur le split **test**.
+- **A3 — Datasets v2 différents** : ~25 000 train (copie Drive : R50, B0) vs 11 531 images (copie Kaggle : B2, YOLO). Les 4 `analyse_dataset.csv` étaient identiques (copie Drive) ; ceux de B2/YOLO ont été remplacés par une reconstitution du rapport. Dataset exact des modèles Kaggle à confirmer (`docs/DATASETS.md` §4).
+- **A4 — v1 vs v2 non comparables** : framework, taille de YOLO (s vs n), protocole d'hyperparamètres et split diffèrent. Ne pas classer v1 contre v2.
+- **A5 — YOLO v2** : `results.csv` contient 22 epochs, le rapport indique un arrêt à l'epoch 64 ; meilleure accuracy du CSV 97.67 % vs 96.75 % rapporté. Vérifier avec le notebook.
+- **A6 — Poids** : règle uniforme et registre dans `docs/WEIGHTS_REGISTRY.md` ; les `.tflite` sont des exports sans métrique ; chemins/tailles/SHA-256 Drive des 8 modèles à compléter.
+- **A7 — Zero-shot** : non exécuté (cf. ci-dessus) ; décider avec le superviseur entre réécrire le README (fine-tuning) ou exécuter le protocole zero-shot.
+- **A8 — Notebooks** : aucun `.ipynb` exporté à ce jour (`notebooks/v1`, `notebooks/v2` vides) ; les `.py` v1 sont les cellules exécutées regroupées en scripts, les fichiers de résultats v1 correspondent à ces cellules mais l'export avec sorties reste à fournir.
+
+- **A9 — Seed YOLO v1** : 0 (args.yaml), pas 42 ; corrigé dans `docs/ENVIRONMENT.md` §2.
+- **A10 — Métrique v1 = test** (14 707/3 151/3 152) ; manifestes MD5 à générer (`manifests/README.md`).
+
+Documents associés : `docs/DATASETS.md` (sources, licences, nettoyage, classes), `docs/WEIGHTS_REGISTRY.md`, `docs/ENVIRONMENT.md`.
+
+## Correspondance résultat → code (v1)
+
+| Fichier de résultat | Produit par |
+|---|---|
+| `rapport_nettoyage_final_*.json`, `distribution_classes_*.png`, `echantillons_dataset_*.png` | `code/v1/data/02_clean_dataset.py`, `01_visualize_dataset.py` |
+| `best_hyperparameters_*.json`, `args.yaml` | `code/v1/<M>/tune.py` (resp. `train.py` pour `args.yaml`) |
+| `training_log_*_phase{1,2}.csv`, `results.csv`, `results.png`, `.tflite`, `.onnx` | `code/v1/<M>/train.py` |
+| `test_results_*.json`, `confusion_matrix*_*.png` | `code/v1/<M>/test.py` |

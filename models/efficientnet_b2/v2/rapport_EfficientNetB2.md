@@ -1,5 +1,8 @@
 # Modèle : EfficientNetB2(2) — Classification d'images
 
+> ⚠ **Contradiction** : `Resultats/classification_report.json` et le README montrent une mesure sur la **corrosion uniquement** (602 images, 97.18 %, pas un résultat à quatre classes). Le tableau à 4 classes ci-dessous (2 305 images, 97.09 %) n'est **appuyé par aucun fichier de résultats du dépôt** et doit être considéré comme non vérifié ; c'est de plus une métrique de validation.
+
+
 ## 1. Contexte
 - **Dataset** : `NewDataSet` (Kaggle), dossier `concrete-damage-v3`
 - **Tâche** : Classification — détection de dommages sur béton

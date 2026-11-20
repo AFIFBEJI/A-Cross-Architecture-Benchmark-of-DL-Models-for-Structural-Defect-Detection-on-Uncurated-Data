@@ -1,5 +1,8 @@
 # Modèle : YOLO26(2) — Classification d'images
 
+> ⚠ **Métrique de validation** (le split val a servi à l'early stopping), pas de test. Variante **YOLO26n-cls** (v1 : YOLO26s-cls). Valeurs top-1 incohérentes dans le dépôt : voir `README_YOLO26.md`.
+
+
 ## 1. Contexte
 - **Dataset** : `NewDataSet` (Kaggle), dossier `concrete-damage-v3`
 - **Tâche** : Classification — détection de dommages sur béton
