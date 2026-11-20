@@ -8,4 +8,6 @@
 
 Le partitionnement v1 (70/15/15, seed 42) est fait dans `v1/data/02_clean_dataset.py` : le split d'origine du dataset Kaggle est conservé, seuls les doublons/fuites sont retirés (priorité train > val > test).
 
+`v1/data/02_clean_dataset_b2_fullres.py` : variante de nettoyage réellement utilisée pour EfficientNet-B2 (sans resize). Notebooks d'origine retrouvés : voir `../notebooks/`.
+
 Ordre d'exécution et correspondance fichier de résultat → script : `../EXPERIMENT_INDEX.md` et `../notebooks/EXECUTION_ORDER.md`.

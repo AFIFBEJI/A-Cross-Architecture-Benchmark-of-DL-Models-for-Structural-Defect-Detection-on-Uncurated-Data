@@ -6,7 +6,7 @@ Détails historiques (P100, incompatibilités) : `reports/Environnement_Techniqu
 
 | Env. | Expériences | Plateforme / GPU | Python | Frameworks | CUDA | Source des versions |
 |---|---|---|---|---|---|---|
-| **kaggle_p100_v1** | v1 : EfficientNet-B0/B2, ResNet50 (Keras), YOLO26s-cls | Kaggle, Tesla P100-PCIE-16GB (sm_60, 16 269 MiB) ⚠ GPU de B0/B2/ResNet50 à confirmer (README B0/B2 : « P100/T4 ») | 3.12.13 | YOLO : ultralytics 8.4.110, torch 2.4.1+cu121, torchvision 0.19.1+cu121 ; TF/Keras, Keras Tuner : ⚠ non relevées | image Kaggle cu128 ; torch downgradé cu121 pour YOLO | rapport d'environnement |
+| **kaggle_p100_v1** (Python 3.12.13 confirmé par les métadonnées des notebooks d'origine) | v1 : EfficientNet-B0/B2, ResNet50 (Keras), YOLO26s-cls | Kaggle, Tesla P100-PCIE-16GB (sm_60, 16 269 MiB) ⚠ GPU de B0/B2/ResNet50 à confirmer (README B0/B2 : « P100/T4 ») | 3.12.13 | YOLO : ultralytics 8.4.110, torch 2.4.1+cu121, torchvision 0.19.1+cu121 ; TF/Keras, Keras Tuner : ⚠ non relevées | image Kaggle cu128 ; torch downgradé cu121 pour YOLO | rapport d'environnement |
 | **colab_t4_v2** | v2 : ResNet50, EfficientNet-B0 (PyTorch) | Google Colab, GPU T4 | ⚠ | ⚠ | ⚠ | rapports v2 (plateforme, GPU) uniquement |
 | **kaggle_t4_v2** | v2 : EfficientNet-B2, YOLO26n-cls | Kaggle, GPU T4 | ⚠ | ⚠ (Ultralytics, `/content/runs/classify` suggère que YOLO v2 a tourné sur Colab : à confirmer) | ⚠ | rapports v2 |
 
