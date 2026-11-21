@@ -10,6 +10,10 @@ Détails historiques (P100, incompatibilités) : `reports/Environnement_Techniqu
 | **colab_t4_v2** | v2 : ResNet50, EfficientNet-B0 (PyTorch) | Google Colab, GPU T4 | ⚠ | ⚠ | ⚠ | rapports v2 (plateforme, GPU) uniquement |
 | **kaggle_t4_v2** | v2 : EfficientNet-B2, YOLO26n-cls | Kaggle, GPU T4 | ⚠ | ⚠ (Ultralytics, `/content/runs/classify` suggère que YOLO v2 a tourné sur Colab : à confirmer) | ⚠ | rapports v2 |
 
+| **kaggle_2026-11** (ré-exécutions) | tentative de ré-exécution YOLO v1, 2026-11-20 | Kaggle, **2 × Tesla T4**, driver 580.178.04 | 3.13.16 | torch 2.11.0+cu130, torchvision 0.26.0+cu130, ultralytics 8.4.110, TF 2.21.0, Keras 3.13.2, keras-tuner 1.4.8, scikit-learn 1.6.1, numpy 2.1.3, pandas 2.3.3, Pillow 13.0.0 | CUDA 13.0 | sortie de `capture_env.py` (`environments/kaggle_2026-11-20_t4x2_env.json`) |
+
+L'image Kaggle a donc changé depuis l'été : plus de Python 3.12 ni de P100 ici, et `torch==2.4.1+cu121` n'est plus installable (Python 3.13). Toute ré-exécution se fait dans cet environnement différent : les scores peuvent s'écarter légèrement de ceux d'origine.
+
 Toutes les cases ⚠ se remplissent en une commande par notebook (§3) ; le dépôt ne les contient pas et je ne les ai pas estimées.
 
 ## 2. Seeds (réconciliation)

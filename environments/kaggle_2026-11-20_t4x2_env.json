@@ -1,0 +1,18 @@
+{
+  "python": "3.13.16",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "nvidia_smi": "2 x Tesla T4, driver 580.178.04, 15360 MiB",
+  "nvcc": "cuda_13.0.r13.0",
+  "tensorflow": "2.21.0",
+  "keras": "3.13.2",
+  "keras_tuner": "1.4.8",
+  "torch": "2.11.0+cu130",
+  "torch_cuda": "13.0",
+  "torchvision": "0.26.0+cu130",
+  "ultralytics": "8.4.110",
+  "sklearn": "1.6.1",
+  "numpy": "2.1.3",
+  "pandas": "2.3.3",
+  "PIL": "13.0.0",
+  "_source": "sortie de tools/capture_env.py dans la tentative de r\u00e9-ex\u00e9cution YOLO v1 du 2026-11-20 (Kaggle) ; recopi\u00e9e \u00e0 la main depuis la sortie du notebook"
+}

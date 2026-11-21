@@ -4,6 +4,7 @@
 ultralytics==8.4.110
 torch==2.4.1
 torchvision==0.19.1
+# Environnement Kaggle observé le 2026-11-20 (ré-exécutions) : Python 3.13.16, torch 2.11.0+cu130, torchvision 0.26.0+cu130, ultralytics 8.4.110 (voir environments/kaggle_2026-11-20_t4x2_env.json)
 # Colab T4 / Kaggle T4 (v2) : versions NON documentées -> `python tools/capture_env.py colab_t4_v2` / `kaggle_t4_v2` puis figer.
 scikit-learn
 pandas

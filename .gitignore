@@ -4,7 +4,7 @@
 *.h5
 *.onnx
 *.zip
-data/
-datasets/
+/data/
+/datasets/
 __pycache__/
 .ipynb_checkpoints/
