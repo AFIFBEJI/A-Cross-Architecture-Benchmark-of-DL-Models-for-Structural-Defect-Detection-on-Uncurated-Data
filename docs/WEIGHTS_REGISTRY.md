@@ -32,6 +32,14 @@ Les chemins sont donnés relativement à `MonProjet/`. Les dossiers `*(2)` et `Y
 | R50-v2 | 99.17 % (corrosion seule) | val | `ResNet50(2)/Modeles/` | `best_resnet50.pt` | 94384867 | `1gOXjrFBHuWOmSY-gtT5SaZCGHO1drTj3` | ⚠ à calculer |
 | Y26n-v2 | 96.75 % / 97.84 % / 97.67 % (incohérent) | val | `YOLO26(2)/Modeles/` | `best_YOLO26_2.pt` | 3193346 | `1Gh-hwz_-so-sthzkBLlJzk7JtTPVTSNn` | ⚠ à calculer |
 
+### Poids issus de ré-exécutions (nov. 2026, ne remplacent aucun original)
+
+| ID | Métrique (test) | Fichier | Taille | SHA-256 | Emplacement |
+|---|---|---|---|---|---|
+| Y26s-v1 rerun | 94,89 % / AUC 0,9940 | `best.pt` | 11032386 | `f4ec145c5cd9d7584e87dc3a5ac91adb78fd79d809bcf8318ce862f213852b5d` | à déposer sur Drive `rerun_2026-11/` ; sortie Kaggle `yolo26_train/aigis_yolo26_final/weights/` |
+
+Voir `notebooks/v1/rerun_outputs/YOLO26s_v1_rerun_2026-11-22.md`.
+
 ### Autres fichiers présents (à ne pas confondre avec les poids rapportés)
 
 | Dossier | Fichier | Taille | Remarque |
