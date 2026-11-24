@@ -1,13 +1,15 @@
 # Environnement B — YOLO26 (v1 et v2) et modèles PyTorch v2 (ResNet50, EfficientNet-B0/B2)
-# Connu (Kaggle P100, v1 YOLO26s) : Python 3.12.13, ultralytics 8.4.110, torch 2.4.1+cu121, torchvision 0.19.1+cu121
-# (installation : pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 --index-url https://download.pytorch.org/whl/cu121)
+# Versions FIGÉES = ré-exécution Kaggle T4 x2 de nov. 2026 (Python 3.13.16, CUDA 13.0), voir environments/kaggle_v1_yolo26_rerun_env.json
+#   pip install torch==2.11.0 torchvision==0.26.0 --index-url https://download.pytorch.org/whl/cu130
+# Exécution d'ORIGINE YOLO26s v1 (Kaggle P100, Python 3.12.13) : ultralytics 8.4.110, torch 2.4.1+cu121, torchvision 0.19.1+cu121
+#   (pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 --index-url https://download.pytorch.org/whl/cu121)
+# Colab T4 / Kaggle T4 (v2) : versions NON documentées -> `python tools/capture_env.py colab_t4_v2` puis figer.
 ultralytics==8.4.110
-torch==2.4.1
-torchvision==0.19.1
-# Environnement Kaggle observé le 2026-11-20 (ré-exécutions) : Python 3.13.16, torch 2.11.0+cu130, torchvision 0.26.0+cu130, ultralytics 8.4.110 (voir environments/kaggle_2026-11-20_t4x2_env.json)
-# Colab T4 / Kaggle T4 (v2) : versions NON documentées -> `python tools/capture_env.py colab_t4_v2` / `kaggle_t4_v2` puis figer.
-scikit-learn
-pandas
+torch==2.11.0
+torchvision==0.26.0
+scikit-learn==1.6.1
+numpy==2.1.3
+pandas==2.3.3
+pillow==13.0.0
 matplotlib
 seaborn
-pillow
