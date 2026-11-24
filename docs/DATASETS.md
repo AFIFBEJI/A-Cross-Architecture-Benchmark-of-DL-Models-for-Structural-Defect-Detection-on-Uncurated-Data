@@ -60,3 +60,7 @@ Dossier `manifests/` (voir `manifests/README.md`) : CSV `relative_path, class, s
 
 - Archives/datasets nettoyés : non redistribués (licence du v1 brut non établie) → pas de checksum d'archive ; les manifestes MD5 par image tiennent lieu de checksum. Si une redistribution est autorisée, produire `SHA256SUMS.md` avec `tools/hash_files.py`.
 - Poids : `docs/WEIGHTS_REGISTRY.md`.
+
+## Mesure du dossier Drive `concrete-damage-v3` (2026-11-24)
+
+Lu depuis Colab sur `MonProjet/NewDataSet/concrete-damage-v3/train` : corrosion 5 208, cracks 7 648, normal 7 094, spalling 4 996 (24 946 images, 4 classes). C'est le dossier lu par les 4 pipelines de `notebooks/v2/v2_colab_pipelines_rania_original_Untitled1.ipynb`. Les résultats v2 rapportés (R50/B0/B2 : 602-603 images, corrosion seule ; YOLO : train 9 226 / val 2 305) ne correspondent pas à ce dossier. Jeu d'origine de ces résultats : non identifié. Voir `EXPERIMENT_INDEX.md` (A1, A3, A16).
