@@ -38,9 +38,10 @@ Les chemins sont donnés relativement à `MonProjet/`. Les dossiers `*(2)` et `Y
 |---|---|---|---|---|---|
 | Y26s-v1 rerun | 94,89 % / AUC 0,9940 | `best.pt` | 11032386 | `f4ec145c5cd9d7584e87dc3a5ac91adb78fd79d809bcf8318ce862f213852b5d` | à déposer sur Drive `rerun_2026-11/` ; sortie Kaggle `yolo26_train/aigis_yolo26_final/weights/` |
 | R50-v1 rerun | 93,62 % / AUC 0,9915 | `aigis_resnet50_final.keras` | 147591208 | `dc5bed70ed5056f8dfe97101292b8dd795a903c380fc8476615ae272a66633db` | à déposer sur Drive `rerun_2026-11/` |
+| B0-v1 rerun | 92,23 % / AUC 0,9894 | `aigis_efficientnetb0_final.keras` | 43655933 | `0c91248d4584a85f6a280120f0831251a83fc6067a603815050a70f240877984` | à déposer sur Drive `rerun_2026-11/` |
 
 Voir `notebooks/v1/rerun_outputs/YOLO26s_v1_rerun_2026-11-22.md`.
-Voir aussi `notebooks/v1/rerun_outputs/ResNet50_v1_rerun_2026-11-22.md`.
+Voir aussi `notebooks/v1/rerun_outputs/ResNet50_v1_rerun_2026-11-22.md` et `EfficientNetB0_v1_rerun_2026-11-23.md`.
 
 ### Autres fichiers présents (à ne pas confondre avec les poids rapportés)
 
