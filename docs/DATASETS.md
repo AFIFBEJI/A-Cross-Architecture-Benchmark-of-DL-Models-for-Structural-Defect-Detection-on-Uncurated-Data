@@ -92,3 +92,14 @@ Lecture (prudente) :
 - Par les noms, **130 images du test v1 et 129 du val v1 se retrouvent dans le train v2** (fuite possible). Réserve : certains noms génériques (ex. `000001`) peuvent exister dans plusieurs sources ; une fuite réelle suppose de confirmer par la classe ou par un hash perceptuel.
 - Les **603 images du `val/` du Drive v2 (corrosion) sont toutes des images du `val` v1** (par nom). Les scores v2 « corrosion seule » de R50/B0/B2 sont donc mesurés sur des images issues de la validation du v1, non sur un jeu de test indépendant.
 - Les 499 doublons internes confirment la déclaration de Rania.
+
+## Sources et licences du v3 (d'après `rapport_fusion_v3.json`, relevé le 2026-11-26)
+
+| # | Source | Licence | DOI (Mendeley Data) |
+|---|---|---|---|
+| 0 | MDMCS v2 | CC BY 4.0 | 10.17632/6x4dzzrs2h.2 |
+| 1 | Reinforced Concrete Structure Segmentation (2119) | CC BY 4.0 | 10.17632/2vkm6k4cfg.1 |
+| 2 | Reinforced Concrete Structure Segmentation (1841) | CC BY 4.0 | 10.17632/yfhwfcrfmk.1 |
+| 3 | Surface Crack Detection (Özgenel) | CC BY 4.0 | 10.17632/5y9wdsg2zt.2 |
+
+Réserves : informations recopiées du rapport de fusion, **non revérifiées** auprès des pages des datasets. La licence CC BY 4.0 impose l'attribution des auteurs, à mentionner si les données ou des extraits sont redistribués. Le rapport ne dit pas quelle part du v3 vient de chaque source (statistiques d'échantillonnage par classe seulement). Les sources de la v1 brute (`daikhiyassine/dataset`, 21 013 images, licence « Unknown » sur Kaggle) sont décrites plus haut dans ce document ; le v3 reprend ces 21 013 images (voir recouvrement).
