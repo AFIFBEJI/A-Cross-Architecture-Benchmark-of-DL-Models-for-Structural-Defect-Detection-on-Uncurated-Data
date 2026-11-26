@@ -64,3 +64,9 @@ Dossier `manifests/` (voir `manifests/README.md`) : CSV `relative_path, class, s
 ## Mesure du dossier Drive `concrete-damage-v3` (2026-11-24)
 
 Lu depuis Colab sur `MonProjet/NewDataSet/concrete-damage-v3/train` : corrosion 5 208, cracks 7 648, normal 7 094, spalling 4 996 (24 946 images, 4 classes). C'est le dossier lu par les 4 pipelines de `notebooks/v2/v2_colab_pipelines_rania_original_Untitled1.ipynb`. Les résultats v2 rapportés (R50/B0/B2 : 602-603 images, corrosion seule ; YOLO : train 9 226 / val 2 305) ne correspondent pas à ce dossier. Jeu d'origine de ces résultats : non identifié. Voir `EXPERIMENT_INDEX.md` (A1, A3, A16).
+
+## Dossier Drive `concrete-damage-v3` : manifeste et historique (2026-11-26)
+
+- Manifeste (Colab, `tools/make_manifest.py`) : **25 549 images** = train 24 946 (corrosion 5 208, cracks 7 648, normal 7 094, spalling 4 996) + **val 603, uniquement corrosion** + test 0. Le `val/` à une seule classe explique les scores v2 « corrosion seule » (602-603 images) de R50/B0/B2.
+- Historique Drive (onglet Activité du dossier `NewDataSet`) : dossier créé le **2026-08-30**, contenu importé le **2026-08-31 (≈ 01:04 à 01:37)**, partage vers un compte de service Kaggle le 2026-09-04. Aucune suppression ni déplacement visible dans l'activité fournie ; les seuls événements ultérieurs sont des **changements de permissions de partage le 2026-11-19** (« Tous les internautes disposant du lien : Éditeur »). Réserve : activité copiée à la main, éventuellement tronquée.
+- Le dataset Kaggle `daikhiyassine/dataset` (privé, 42,0 k fichiers, 7,98 Go, version 1) est le **v1 brut** ; la copie Kaggle du v2 (11 531 images selon Rania) est `daikhiyassine/concrete-damage-v3` : versions et nombre de fichiers à relever.

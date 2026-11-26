@@ -27,10 +27,10 @@ Les chemins sont donnés relativement à `MonProjet/`. Les dossiers `*(2)` et `Y
 | B2-v1 | 93.05 % | test | `EfficientNetB2/Modeles/` | `aigis_efficientnetb2_final.keras` | 60586878 | `1chd4IoT9fOfNI_6ZqO6mKTFASOQlxdXy` | `a80ca973fa9b8fb5f645a28ebea1ce82bf6409d9cd1dbf8e264fe64d9b272e1b` (copie locale ; taille identique au Drive) |
 | R50-v1 | 93.69 % | test | `ResNet50/Modeles/` | **`aigis_resnet50_final.keras` ABSENT** ; seul `best_model_resnet50_phase1.keras` est présent | 111857238 (phase 1) | `1aK3Alf_zHyA3bJoSr1-zxFV2pS3wvOPC` | ⚠ à calculer ; ne prouve PAS la métrique 93,69 % (phase 1 seulement) |
 | Y26s-v1 | 94.70 % top-1 | test | `Yolo26/Modeles/` | `best.pt` (+ `best.onnx` 21803864 o, export) | 11032699 | `1f-6MVKv97FcnHYvbW6krDXn_1Vx4b6-9` | `371048668a644f00b7b5a9c53007845c6d2c871869f04d8c404b3a96c3ef9239` (copie locale ; taille identique au Drive) |
-| B0-v2 | 97.01 % (corrosion seule) | val | `EfficientNetB0(2)/Modeles/` | `best_efficientnetb0.pt` | 16353495 | `1vFXfaiH12A8IBne7A4mT4mlCYq891dfH` | ⚠ à calculer |
-| B2-v2 | 97.18 % (corrosion seule) | val | `EfficientNetB2(2)/Modeles/` | `best_efficientnetb2.pt` | 31286239 | `1yrxDeLFhNbPQy0e9EO0FnVbmrXyhYnTF` | ⚠ à calculer |
-| R50-v2 | 99.17 % (corrosion seule) | val | `ResNet50(2)/Modeles/` | `best_resnet50.pt` | 94384867 | `1gOXjrFBHuWOmSY-gtT5SaZCGHO1drTj3` | ⚠ à calculer |
-| Y26n-v2 | 96.75 % / 97.84 % / 97.67 % (incohérent) | val | `YOLO26(2)/Modeles/` | `best_YOLO26_2.pt` | 3193346 | `1Gh-hwz_-so-sthzkBLlJzk7JtTPVTSNn` | ⚠ à calculer |
+| B0-v2 | 97.01 % (corrosion seule) | val | `EfficientNetB0(2)/Modeles/` | `best_efficientnetb0.pt` | 16353495 | `1vFXfaiH12A8IBne7A4mT4mlCYq891dfH` | `969a83d959d9f046084b60b591b81afa7adce5de71b85b516f8eb1b77ed912d7` (copie téléchargée du Drive, taille identique, 2026-11-26) |
+| B2-v2 | 97.18 % (corrosion seule) | val | `EfficientNetB2(2)/Modeles/` | `best_efficientnetb2.pt` | 31286239 | `1yrxDeLFhNbPQy0e9EO0FnVbmrXyhYnTF` | `a51d6bd4dd56eb68147c627b7c441a64b18c96cf436c8f949755dacc15799fa7` (copie téléchargée du Drive, taille identique, 2026-11-26) |
+| R50-v2 | 99.17 % (corrosion seule) | val | `ResNet50(2)/Modeles/` | `best_resnet50.pt` | 94384867 | `1gOXjrFBHuWOmSY-gtT5SaZCGHO1drTj3` | `a0a0acad48334392c24d260705c3ab54b77defe38548f0fd8e37339df0150057` (copie téléchargée du Drive, taille identique, 2026-11-26) |
+| Y26n-v2 | 96.75 % / 97.84 % / 97.67 % (incohérent) | val | `YOLO26(2)/Modeles/` | `best_YOLO26_2.pt` (checkpoint allégé, epoch=-1 ; **run Colab du 2026-09-04 11:30 UTC**, `data=/content/newdataset_clean`, seed 42, patience 20 ; top-1 val 0,97674, val/loss 0,09304 → correspond au 97,67 %) | 3193346 | `1Gh-hwz_-so-sthzkBLlJzk7JtTPVTSNn` | `2d5fba6b0e5c9fd7e26b880aa23de0a1156d40aa4f3abb7b7552d5f73a3749be` (copie téléchargée du Drive, taille identique, 2026-11-26) |
 
 ### Poids issus de ré-exécutions (nov. 2026, ne remplacent aucun original)
 
@@ -52,7 +52,7 @@ Voir aussi `notebooks/v1/rerun_outputs/ResNet50_v1_rerun_2026-11-22.md` `Efficie
 | `EfficientNetB2/Modeles/` | `best_model_phase1.keras` (43845968), `best_model_phase2.keras` (60586878), `aigis_efficientnetb2.tflite` (10002872) | | idem |
 | `ResNet50/Modeles/` | `aigis_resnet50 (1).tflite` (26034760) | | nom à nettoyer sur Drive aussi |
 | `Yolo26/Modeles/` | `best.onnx` (21803864) | | export |
-| `YOLO26(2)/Modeles/` | `last_YOLO26_2.pt` (3193346), **`best (1).pt` (9383971)** | | `last_` a la même taille que `best_` ; `best (1).pt` est un autre fichier de taille différente, d'origine inconnue : à identifier ou supprimer |
+| `YOLO26(2)/Modeles/` | `last_YOLO26_2.pt` (3193346), **`best (1).pt` (9383971)** | | `last_` a la même taille que `best_` ; `best (1).pt` est un autre fichier de taille différente, checkpoint Ultralytics **YOLO26n-cls** **non allégé** (garde l'optimiseur, d'où 9,4 Mo), **run Kaggle du 2026-09-04 08:46 UTC** (`data=/kaggle/working/newdataset_clean`, 100 ép. demandées, patience 20, seed 42) : meilleure époque 48, top-1 val 0,9679, fitness 0,98395. C'est un **autre entraînement** que `best_YOLO26_2.pt` |
 
 ### Points d'attention
 

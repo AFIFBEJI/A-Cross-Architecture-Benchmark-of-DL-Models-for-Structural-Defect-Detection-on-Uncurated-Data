@@ -1,0 +1,17 @@
+{
+  "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "gpu_error": "nvidia-smi absent : session Colab SANS GPU (CPU)",
+  "tensorflow": "2.21.0",
+  "keras": "3.13.2",
+  "keras_tuner": null,
+  "torch": "2.14.1+cpu",
+  "torch_cuda": null,
+  "torchvision": "0.29.1+cpu",
+  "ultralytics": null,
+  "sklearn": "1.6.1",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "PIL": "11.3.0",
+  "note": "Capturé le 2026-11-26 dans Colab (CPU). Ce n'est PAS l'environnement des entraînements v2 de l'été 2026 (inconnu)."
+}

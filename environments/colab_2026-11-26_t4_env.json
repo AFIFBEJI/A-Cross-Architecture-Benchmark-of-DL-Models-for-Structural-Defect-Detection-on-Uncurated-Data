@@ -1,0 +1,20 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "nvidia_smi": "Tesla T4, 580.82.07, 15360 MiB",
+  "nvcc": [
+    "Build cuda_13.0.r13.0/compiler.36424714_0"
+  ],
+  "tensorflow": "2.21.0",
+  "keras": "3.13.2",
+  "keras_tuner": null,
+  "torch": "2.14.1+cu130",
+  "torch_cuda": "13.0",
+  "torchvision": "0.29.1+cu130",
+  "ultralytics": "8.4.219",
+  "sklearn": "1.6.1",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "PIL": "11.3.0",
+  "note": "Capturé le 2026-11-26 dans Colab T4. Environnement ACTUEL, pas celui des entraînements v2 de l'été 2026 (inconnu)."
+}
