@@ -1,6 +1,6 @@
 # manifests/
 
-Un CSV par jeu de données réellement utilisé : `v1_clean_b0.csv`, `v1_clean_yolo26.csv`, `v1_clean_aigis.csv`, `v1_clean_b2.csv` (⚠ si le nettoyage a été refait par modèle, les 4 doivent être identiques), `v2_drive_newdataset.csv`, `v2_kaggle_b2_yolo.csv`, `v3_concrete_damage.csv`.
+Fichiers fournis : `v1_clean_yolo26_manifest.csv`, `v1_clean_resnet50_manifest.csv`, `v1_clean_b0_manifest.csv` (identiques ligne à ligne : mêmes chemins, classes, partitions et MD5, 21 010 images), `v1_clean_b2_manifest.csv` (même partition par nom de fichier, mais MD5 et extensions différents : variante sans redimensionnement), `v2_concrete_damage_v3_manifest.csv` (dossier Drive `concrete-damage-v3`, 25 549 images). Manquent : la copie Kaggle de `concrete-damage-v3` (35 641 images) et le jeu d'entraînement d'origine du v2 (non identifié).
 
 Génération (cellule Kaggle/Colab, dataset monté) :
 ```bash
@@ -8,4 +8,4 @@ python tools/make_manifest.py /kaggle/working/dataset_clean_b0 manifests/v1_clea
 # attendu v1 : train=14707 val=3151 test=3152
 python tools/verify_manifest.py /kaggle/working/dataset_clean_b0 manifests/v1_clean_b0.csv
 ```
-Colonnes : `relative_path, class, split, md5`. Aucun manifeste n'est fourni à ce jour : les images n'étaient pas disponibles lors de la préparation du dépôt.
+Colonnes : `relative_path, class, split, md5`. Les manifestes v1 ont été générés lors des ré-exécutions Kaggle de novembre 2026, et celui du v2 dans Colab le 2026-11-26.

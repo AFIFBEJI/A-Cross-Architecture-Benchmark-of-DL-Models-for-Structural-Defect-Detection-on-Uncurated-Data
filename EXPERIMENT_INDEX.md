@@ -39,7 +39,7 @@ Benchmarks : **curé** = GROUP2 (3 600 images, travail antérieur, hors de ce d�
 - **A8 — Notebooks** : **les notebooks d'origine (v1 Kaggle, v2 Colab/Kaggle) ont été supprimés et sont introuvables** (déclaré par l'auteur le 20/11/2026). `notebooks/v1/rerun_*.ipynb` = ré-exécutions v1 à lancer et ré-exporter avec sorties ; pour la v2, aucun notebook (protocole documenté seulement). Ancien énoncé : aucun `.ipynb` exporté à ce jour (`notebooks/v1`, `notebooks/v2` vides) ; les `.py` v1 sont les cellules exécutées regroupées en scripts, les fichiers de résultats v1 correspondent à ces cellules mais l'export avec sorties reste à fournir.
 
 - **A9 — Seed YOLO v1** : 0 (args.yaml), pas 42 ; corrigé dans `docs/ENVIRONMENT.md` §2.
-- **A10 — Métrique v1 = test** (14 707/3 151/3 152) ; manifestes MD5 à générer (`manifests/README.md`).
+- **A10 — Métrique v1 = test** (14 707/3 151/3 152) ; manifestes MD5 générés (voir `manifests/README.md`, A13–A17).
 
 Documents associés : `docs/DATASETS.md` (sources, licences, nettoyage, classes), `docs/WEIGHTS_REGISTRY.md`, `docs/ENVIRONMENT.md`.
 

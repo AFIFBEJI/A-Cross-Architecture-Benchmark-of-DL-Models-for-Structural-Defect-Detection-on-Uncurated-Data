@@ -119,8 +119,8 @@ These are directional hypotheses to be tested, not pre-supposed results. The pos
 ├── evaluation/                  # Métriques, matrices de confusion, McNemar/bootstrap, courbes
 ├── inference/                   # Inférence (évaluation seule) d'un checkpoint sur un dossier d'images
 ├── docs/                        # DATASETS.md, WEIGHTS_REGISTRY.md, ENVIRONMENT.md
-├── manifests/                   # Manifestes de partition (CSV MD5) — à générer
-├── environments/                # pip freeze / versions par notebook — à générer
+├── manifests/                   # Manifestes de partition (CSV MD5) : v1 nettoyé (4 variantes) et v2 `concrete-damage-v3`
+├── environments/                # Versions capturées (Kaggle T4 x2, Colab) par ré-exécution
 ├── tools/                       # make_manifest, verify_manifest, hash_files, capture_env
 ├── models/<modèle>/{v1,v2}/     # Dataset (rapports), Hyperparametres, Resultats, rapports par modèle
 ├── reports/                     # Rapport global, bibliographie, veille, environnement
@@ -164,4 +164,14 @@ Core dependencies: `torch`, `torchvision`, `tensorflow`/`keras` (EfficientNet an
 
 ## Status
 
-Travail en cours de mise en conformité reproductibilité (voir `EXPERIMENT_INDEX.md`). Disponible : code v1, index des expériences, documentation datasets/poids/environnement, scripts d'évaluation. **Restent à fournir** : notebooks `.ipynb` exportés, manifestes MD5, SHA-256 et chemins Drive des 8 checkpoints, versions figées des environnements, évaluation 4 classes de la v2. Les résultats v2 ne sont pas des résultats de test à quatre classes (voir index). Le protocole zero-shot n'a pas été exécuté. Rédaction du manuscrit : travail ultérieur.
+Mise en conformité reproductibilité (voir `EXPERIMENT_INDEX.md`, état au 2026-11-26).
+
+**Disponible** : code v1 ; index des expériences et anomalies (A1–A23) ; ré-exécution des 4 modèles v1 (YOLO26s, ResNet50, EfficientNet-B0, EfficientNet-B2) sur Kaggle T4 avec notebooks exécutés, résultats et matrices de confusion dans `notebooks/v1/rerun_outputs/` (écarts de −0,16 à +0,19 pt avec les scores d'origine) ; manifestes MD5 du v1 nettoyé (21 010 images ; 14 707 / 3 151 / 3 152) et du v2 `concrete-damage-v3` (25 549 images) ; registre des poids avec SHA-256 (`docs/WEIGHTS_REGISTRY.md`) ; versions figées (`requirements-*.txt`, `environments/`) ; documentation des datasets, sources et licences (`docs/DATASETS.md`).
+
+**Limites connues** :
+- Les notebooks d'origine v1 ne sont pas tous retrouvés : les `rerun_*` sont des ré-exécutions, pas les originaux. Le checkpoint final ResNet50 v1 d'origine est absent du Drive ; la ré-exécution sert de remplaçant traçable.
+- **v2** : le jeu d'entraînement exact n'est pas identifié ; les modèles n'ont pas tous été entraînés sur les mêmes données ; les scores de ResNet50/B0/B2 sont mesurés sur un `val/` d'une seule classe (corrosion, 603 images, issues du val v1) ; fuite possible de ~130 images du test v1 dans le train v2 (voir `docs/DATASETS.md`). Ces scores ne sont pas des résultats de test à quatre classes.
+- Le protocole zero-shot décrit plus haut n'a pas été exécuté (voir la note de cohérence).
+- Environnements d'origine v2 (Colab/Kaggle, été 2026) inconnus ; seuls ceux de novembre 2026 sont capturés.
+
+**Restent à faire** : évaluation indépendante à quatre classes sur un jeu v3 partitionné par groupes (sans fuite), clairement identifiée comme nouveau run ; tests statistiques appariés (McNemar/bootstrap) et plusieurs graines ; rédaction du manuscrit.
