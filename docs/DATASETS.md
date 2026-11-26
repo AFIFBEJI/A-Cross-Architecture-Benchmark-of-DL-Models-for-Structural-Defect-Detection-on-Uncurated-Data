@@ -70,3 +70,25 @@ Lu depuis Colab sur `MonProjet/NewDataSet/concrete-damage-v3/train` : corrosion 
 - Manifeste (Colab, `tools/make_manifest.py`) : **25 549 images** = train 24 946 (corrosion 5 208, cracks 7 648, normal 7 094, spalling 4 996) + **val 603, uniquement corrosion** + test 0. Le `val/` à une seule classe explique les scores v2 « corrosion seule » (602-603 images) de R50/B0/B2.
 - Historique Drive (onglet Activité du dossier `NewDataSet`) : dossier créé le **2026-08-30**, contenu importé le **2026-08-31 (≈ 01:04 à 01:37)**, partage vers un compte de service Kaggle le 2026-09-04. Aucune suppression ni déplacement visible dans l'activité fournie ; les seuls événements ultérieurs sont des **changements de permissions de partage le 2026-11-19** (« Tous les internautes disposant du lien : Éditeur »). Réserve : activité copiée à la main, éventuellement tronquée.
 - Le dataset Kaggle `daikhiyassine/dataset` (privé, 42,0 k fichiers, 7,98 Go, version 1) est le **v1 brut** ; la copie Kaggle du v2 (11 531 images selon Rania) est `daikhiyassine/concrete-damage-v3` : versions et nombre de fichiers à relever.
+
+## Dataset Kaggle `daikhiyassine/concrete-damage-v3` (relevé le 2026-11-26, copie d'écran)
+
+- Version 1 (4,14 Go), 35,6 k fichiers : train 24 946 (corrosion 5 208, cracks 7 648, normal 7 094, spalling 4 996) ; val 5 343 (1 116 / 1 638 / 1 520 / 1 069) ; test 5 352 (1 119 / 1 639 / 1 521 / 1 073) ; plus `rapport_fusion_v3.json`. Total des images : **35 641**, 4 classes dans les trois partitions.
+- Le `train` Kaggle a exactement les mêmes effectifs que le `train` du dossier Drive (24 946). En revanche le `val/` du Drive n'a que 603 images de corrosion, et il n'y a pas de `test/` sur le Drive : **les deux copies ne sont pas identiques**. L'affirmation « copie Kaggle de 11 531 images » (déclaration de Rania, A18) ne correspond pas à ce dataset ; elle concernerait un autre dossier (`newdataset_clean`, nettoyé dans le notebook).
+- `rapport_fusion_v3.json` (aperçu partiel) : date de fusion 10/08/2026 ; v1 original 21 013 images ; nouvelles images nettes 12 806 ; total final **33 819** ; doublons avec l'existant 5 753 ; doublons internes 992 ; doublons résiduels supprimés 3 ; 4 sources, statistiques d'échantillonnage par classe et comparaison v1 / final. Le total du rapport (33 819) diffère du nombre de fichiers Kaggle (35 641) de 1 822 : écart non expliqué à ce jour.
+- Conséquence à vérifier : le v3 contient les 21 013 images du v1, donc un recouvrement possible entre le `test` v1 et le train du v3 (fuite de données). Contrôle à faire par comparaison des MD5 entre le manifeste v2 et le manifeste v1 B2 (originaux non redimensionnés).
+
+## Recouvrement v1 / v2 (concrete-damage-v3) — contrôles du 2026-11-26
+
+Comparaison des manifestes `v1_clean_b2_manifest.csv` (21 010 images) et `v2_concrete_damage_v3_manifest.csv` (25 549 images), faite dans Colab.
+
+| Méthode | Résultat |
+|---|---|
+| MD5 identiques | 1 791 images v1 retrouvées (≈ 8,5 %) : train→train 1 683, val→train 1, val→val 107, **aucune du test v1**. 1 image a une classe différente. 499 doublons MD5 à l'intérieur du v2. |
+| Noms de fichiers (sans extension) identiques | 16 174 images v1 retrouvées sur 21 010 : train→train 15 312, **test→train 130**, **val→train 129**, val→val 603. |
+
+Lecture (prudente) :
+- Les MD5 ne coïncident que pour 8,5 % des images : les fichiers du v2 ont été en grande partie réencodés/redimensionnés lors de la fusion ; le contrôle par MD5 ne suffit donc pas à exclure une fuite.
+- Par les noms, **130 images du test v1 et 129 du val v1 se retrouvent dans le train v2** (fuite possible). Réserve : certains noms génériques (ex. `000001`) peuvent exister dans plusieurs sources ; une fuite réelle suppose de confirmer par la classe ou par un hash perceptuel.
+- Les **603 images du `val/` du Drive v2 (corrosion) sont toutes des images du `val` v1** (par nom). Les scores v2 « corrosion seule » de R50/B0/B2 sont donc mesurés sur des images issues de la validation du v1, non sur un jeu de test indépendant.
+- Les 499 doublons internes confirment la déclaration de Rania.
